@@ -1,5 +1,5 @@
-# Use the official .NET SDK image for build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+# Use the official .NET 9.0 SDK image for build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /app
 
 # Copy csproj and restore as distinct layers
@@ -12,8 +12,8 @@ COPY . ./
 # Build the application
 RUN dotnet publish -c Release -o out
 
-# Use the official ASP.NET runtime image for the app
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+# Use the official ASP.NET 9.0 runtime image for the app
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 COPY --from=build /app/out .
 
