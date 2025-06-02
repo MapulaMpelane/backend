@@ -22,7 +22,7 @@ EXPOSE 5157
 EXPOSE 7262
 
 # Set environment variables for ASP.NET Core
-ENV ASPNETCORE_URLS=http://+:5157;https://+:7262
+ENV ASPNETCORE_URLS=http://+:5157
 ENV ASPNETCORE_ENVIRONMENT=Development
 
 # Run the application
