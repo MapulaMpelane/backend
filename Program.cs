@@ -31,6 +31,13 @@ builder.Services.AddDbContext<HospitalDbContext>(options =>
 
 var app = builder.Build();
 
+// Ensure database is created and migrations are applied
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<HospitalDbContext>();
+    db.Database.Migrate();
+}
+
 app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
